@@ -3,5 +3,5 @@ flask-cors
 python-dotenv
 requests==2.32.4
 streamlit==1.40.1
-pandas==2.0.3
+pandas==1.5.3
 plotly==6.5.2
