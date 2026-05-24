@@ -1,4 +1,5 @@
 flask==3.0.3
+gunicorn
 flask-cors
 python-dotenv
 requests==2.32.4
