@@ -736,7 +736,6 @@ def render_sidebar(users: list, connected: bool) -> str | None:
             cls    = "pt-card active" if active else "pt-card"
             last   = (u["last_session"] or "—")[:10]
             avg    = f"{u['avg_score']}/5" if u.get("avg_score") else "—"
-            avg    = f"{u['avg_score']}/5" if u.get("avg_score") else "—"
             st.markdown(
                 f'<div class="{cls}"><div class="pt-id">ID · {u["user_id"]}</div>'
                 f'<div class="pt-name">{u["display_name"]}</div>'
@@ -754,7 +753,6 @@ def render_sidebar(users: list, connected: bool) -> str | None:
                 st.markdown(
                     f'<p style="font-family:\'Azeret Mono\',monospace;'
                     f'font-size:.7rem;color:#6b7560;line-height:1.8">'
-                    f'Permanently removes '
                     f'Permanently removes '
                     f'<span style="color:#f04a6e;font-weight:600">'
                     f'{active_user["display_name"]}</span> '
@@ -1256,7 +1254,6 @@ def render_user_view(user_id: str, display_name: str):
             unsafe_allow_html=True,
         )
         ok = st.checkbox("I understand this is irreversible", key=f"ck_{user_id}")
-        ok = st.checkbox("I understand this is irreversible", key=f"ck_{user_id}")
         if st.button(f"Erase {display_name}'s data",
                      disabled=not ok, key=f"del_{user_id}"):
             clear_user_sessions(user_id)
@@ -1279,6 +1276,9 @@ def main():
             '</div>', unsafe_allow_html=True,
         )
         return
+
+    users  = load_users()
+    sel_id = render_sidebar(users, True)
 
     if sel_id is None:
         st.markdown(
