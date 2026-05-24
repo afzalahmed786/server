@@ -164,6 +164,9 @@ def api_get(path: str, params: dict = None) -> dict | list | None:
     except Exception as exc:
         st.session_state["_api_error"] = str(exc)
         return None
+
+
+def get_connection():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     return conn
