@@ -489,7 +489,6 @@ def chart_difficulty(df):
         x=sdf["id"], y=sdf["difficulty_after"], mode="lines+markers",
         line=dict(color="#c8f04a", width=2),
         marker=dict(color="#c8f04a", size=6, line=dict(color="#0d0e0c", width=1.5)),
-        marker=dict(color="#c8f04a", size=6, line=dict(color="#0d0e0c", width=1.5)),
         fill="tozeroy", fillcolor="rgba(200,240,74,0.04)",
         hovertemplate="Session #%{x} — Level %{y}<extra></extra>",
     ))
@@ -542,7 +541,6 @@ def chart_accuracy_pie(df):
         annotations=[dict(
             text=f"{pct}%",
             font=dict(size=26, color="#e8ecdf", family="Playfair Display, serif"),
-            font=dict(size=26, color="#e8ecdf", family="Playfair Display, serif"),
             showarrow=False,
         )],
     ))
@@ -583,10 +581,7 @@ def chart_response_time(df):
     fig = go.Figure()
     fig.add_trace(go.Scatter(
         x=valid["id"], y=avg_s, mode="lines+markers", name="Avg RT",
-        x=valid["id"], y=avg_s, mode="lines+markers", name="Avg RT",
         line=dict(color="#f0b84a", width=2.5),
-        marker=dict(color="#f0b84a", size=6, line=dict(color="#0d0e0c", width=1.5)),
-        fill="tozeroy", fillcolor="rgba(240,184,74,0.05)",
         marker=dict(color="#f0b84a", size=6, line=dict(color="#0d0e0c", width=1.5)),
         fill="tozeroy", fillcolor="rgba(240,184,74,0.05)",
         hovertemplate="Session #%{x}<br>%{y:.2f}s<extra></extra>",
@@ -594,14 +589,12 @@ def chart_response_time(df):
     if len(valid) >= 3:
         fig.add_trace(go.Scatter(
             x=valid["id"], y=rolling, mode="lines", name="3-session trend",
-            x=valid["id"], y=rolling, mode="lines", name="3-session trend",
             line=dict(color="#f04a6e", width=2, dash="dot"),
             hovertemplate="Trend: %{y:.2f}s<extra></extra>",
         ))
     fig.update_layout(**blayout(
         height=240, showlegend=False,
         xaxis=dict(gridcolor="#2c3025", linecolor="#2c3025",
-                   tickfont=dict(size=9), zeroline=False, title="session"),
                    tickfont=dict(size=9), zeroline=False, title="session"),
         yaxis=dict(gridcolor="#2c3025", linecolor="#2c3025",
                    tickfont=dict(size=9), zeroline=False,
